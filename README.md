@@ -11,17 +11,17 @@ for participating in a LiveView Native workshop.
 
 At this point you will likely bre prompted with a modal:
 
-![images/trust_and_enable.png](Trust & Enable)
+![Trust & Enable](images/trust_and_enable.png)
 
 Click `Trust & Enable` and press `►` again.
 
 You may see a new build failure. Click the red `X`
 
-![images/redx.png](Red X)
+![Red X](images/redx.png)
 
 and on the left-hand gutter you will see two errors
 
-![images/gutter.png](Gutter)
+![Gutter](images/gutter.png)
 
 Click on each and you will again be prompted with another `Trust & Enable` request. Agree to both and build again.
 

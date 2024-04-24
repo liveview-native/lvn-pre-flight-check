@@ -2,23 +2,37 @@
 //  ContentView.swift
 //  LVN Pre-Flight Check
 //
-//  Created by Brian Cardarella on 4/20/24.
-//
 
 import SwiftUI
+import LiveViewNative
+import LiveViewNativeLiveForm
+import LiveViewNativeCharts
+import LiveViewNativeMapKit
+import LiveViewNativeAVKit
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        #LiveView(
+            .automatic(
+                development: URL(string: "https://lvn-demo.fly.dev/")!,
+                production: URL(string: "https://lvn-demo.fly.dev/")!
+            ),
+            addons: [
+                LiveFormRegistry<_>.self,
+                AVKitRegistry<_>.self,
+                MapKitRegistry<_>.self,
+                ChartsRegistry<_>.self
+            ]
+        ) {
+            ConnectingView()
+        } disconnected: {
+            DisconnectedView()
+        } reconnecting: { content, isReconnecting in
+            ReconnectingView(isReconnecting: isReconnecting) {
+                content
+            }
+        } error: { error in
+            ErrorView(error: error)
         }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
